@@ -1,0 +1,13 @@
+#!/bin/bash
+set -x
+# $IMAGE_NAME var is injected into the build so the tag is correct.
+# See https://docs.docker.com/docker-hub/builds/advanced/
+
+VERSION=$(git describe --tags)
+
+echo "=> Build hook running for "$IMAGE_NAME":"$VERSION
+
+pushd build/docker/app
+docker build --tag $IMAGE_NAME .
+
+popd

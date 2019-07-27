@@ -1,0 +1,7 @@
+#!/bin/bash
+echo "=> Building the Spring Boot JAR and Docker Context"
+# Using openjdk:8-jdk-slim as Gradle needs bash
+docker container run -v $(pwd)/../../../..:/src \
+    --workdir /src/ \
+    openjdk:8-jdk-slim \
+    bash -c "./gradlew buildDockerContext --no-daemon"
