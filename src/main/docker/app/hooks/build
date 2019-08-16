@@ -7,7 +7,7 @@ VERSION=$(git describe --tags)
 
 echo "=> Build hook running for "$IMAGE_NAME":"$VERSION
 
-pushd /../../../../build/docker/app
+pushd ../../../../build/docker/app
 docker build --tag $IMAGE_NAME .
 
 popd
